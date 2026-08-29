@@ -9,11 +9,10 @@
   <title>RTB Guide | Ronan Downes</title>
   <link rel="icon" href="{{ '/assets/rtb-logo.svg' | relative_url }}" type="image/svg+xml">
   <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/focus.css' | relative_url }}">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#home" aria-label="Ronan Downes RTB Guide home">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Ronan Downes RTB Guide home">
       <img class="brand-logo" style="display:block;width:148px;height:auto" src="{{ '/assets/rtb-logo.svg' | relative_url }}" alt="Ronan Downes RTB Guide">
     </a>
 
@@ -22,80 +21,36 @@
     </button>
 
     <nav class="topnav" id="mainNav" aria-label="Main navigation">
-      <a class="navlabel is-current" href="#registration">Registration</a>
-      <a class="navlabel" href="#renting">Renting</a>
-      <a class="navlabel" href="#disputes">Disputes</a>
-      <a class="navlabel" href="#compliance">Compliance</a>
-      <a class="navlabel" href="#resources">Resources</a>
-      <a class="navlabel" href="#data">Data &amp; Insights</a>
-      <a class="navlabel" href="#about">About</a>
+      <a class="navlabel" href="{{ '/registration.html' | relative_url }}">Registration</a>
+      <a class="navlabel" href="{{ '/renting.html' | relative_url }}">Renting</a>
+      <a class="navlabel" href="{{ '/disputes.html' | relative_url }}">Disputes</a>
+      <a class="navlabel" href="{{ '/compliance.html' | relative_url }}">Compliance</a>
+      <a class="navlabel" href="{{ '/resources.html' | relative_url }}">Resources</a>
+      <a class="navlabel" href="{{ '/data-insights.html' | relative_url }}">Data &amp; Insights</a>
+      <a class="navlabel" href="{{ '/about.html' | relative_url }}">About</a>
     </nav>
   </header>
 
-  <main id="home" class="page-stage">
+  <main class="page-stage">
     <article class="doc-paper">
       <p class="doc-kicker">Residential Tenancies</p>
       <h1>RTB Guide</h1>
-      <p class="doc-intro">A fast, plain-English working guide to registration, rent, termination, disputes, compliance and RTB data. Current and historical rules are kept distinct where dates matter.</p>
+      <p class="doc-intro">My practical interpretation of RTB rules, processes, evidence and data. Choose a section and go straight to its page.</p>
 
       <div class="doc-toolbar">
-        <a class="edit-link" href="https://app.pagescms.org/ronandownes/rtb/main" target="_blank" rel="noopener">Open Pages CMS</a>
-        <span class="toolbar-note">Double-click any topic heading for focus view.</span>
+        <a class="edit-link" href="https://app.pagescms.org/ronandownes/rtb/main" target="_blank" rel="noopener">Open CMS</a>
       </div>
 
-      <div class="workspace">
-        <aside class="topic-rail" aria-label="Topics on this page">
-          {% for section in site.data.guide.sections %}
-            <a href="#{{ section.id }}">{{ section.title }}</a>
-          {% endfor %}
-          <a href="#word-wall">Word Wall</a>
-        </aside>
-
-        <div class="doc-body" id="docBody">
-          {% for section in site.data.guide.sections %}
-          <section class="topic-section" id="{{ section.id }}" data-title="{{ section.title | escape }}">
-            <button class="topic-heading" type="button" aria-expanded="true" aria-haspopup="dialog" title="Double-click for focus view">
-              <span>{{ section.title }}</span><span class="topic-caret">−</span>
-            </button>
-            <div class="topic-content">
-              {{ section.body | markdownify }}
-
-              {% if section.id == 'termination-notices' %}
-              <div class="notice-checker">
-                <div class="notice-card"><h3>Official requirements</h3><p class="muted">Current and historical RTB requirements will be kept separately where the applicable date matters.</p></div>
-                <div class="notice-card"><h3>Notice being checked</h3><p class="muted">A notice can be checked requirement by requirement without turning the public guide into a case file.</p></div>
-              </div>
-              {% endif %}
-
-              {% if section.id == 'services' %}
-              <div class="service-grid">
-                <div>Dispute Services</div><div>Submit a Dispute Case</div><div>SSA Services <span class="verify">verify label</span></div><div>Submit a Tenancy Data Sheet</div><div>Submit a Rent Setting Notice</div><div>Submit a Rent Review Notice</div><div>Termination Notices</div>
-              </div>
-              {% endif %}
-
-              {% if section.id == 'data' %}
-              <h3>New tenancies</h3>
-              <div class="table-wrap"><table><thead><tr><th>Area / period</th><th>Typical rent measure</th><th>Change</th><th>Source period</th></tr></thead><tbody><tr><td colspan="4" class="muted">Authoritative RTB tenancy-index data will be loaded here.</td></tr></tbody></table></div>
-              <h3>Existing / older tenancies</h3>
-              <div class="table-wrap"><table><thead><tr><th>Area / period</th><th>Typical rent measure</th><th>Change</th><th>Source period</th></tr></thead><tbody><tr><td colspan="4" class="muted">Historical RTB tenancy-index data will remain separate from new-tenancy data.</td></tr></tbody></table></div>
-              {% endif %}
-
-              {% for item in section.terms %}
-              <button class="glossary-toggle" data-term="{{ item.term | escape }}" data-definition="{{ item.definition | escape }}">Add “{{ item.term }}” to Word Wall</button>
-              {% endfor %}
-            </div>
-          </section>
-          {% endfor %}
-
-          <section class="glossary-section" id="word-wall">
-            <div class="glossary-heading-row">
-              <h2>Word Wall / Language Bank</h2>
-              <button id="clearGlossary" class="secondary-button" type="button">Clear Word Wall</button>
-            </div>
-            <p class="muted">Keep only the RTB language you want to retrieve, practise and articulate.</p>
-            <p class="muted glossary-empty" id="glossaryEmpty">Nothing saved yet. Add terms from any topic.</p>
-            <div id="glossaryList" class="glossary-list"></div>
-          </section>
+      <div class="doc-body">
+        <h2>Sections</h2>
+        <div class="service-grid">
+          <a href="{{ '/registration.html' | relative_url }}">Registration</a>
+          <a href="{{ '/renting.html' | relative_url }}">Renting</a>
+          <a href="{{ '/disputes.html' | relative_url }}">Disputes</a>
+          <a href="{{ '/compliance.html' | relative_url }}">Compliance</a>
+          <a href="{{ '/resources.html' | relative_url }}">Resources</a>
+          <a href="{{ '/data-insights.html' | relative_url }}">Data &amp; Insights</a>
+          <a href="{{ '/about.html' | relative_url }}">About</a>
         </div>
       </div>
     </article>
