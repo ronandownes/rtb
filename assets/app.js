@@ -128,13 +128,8 @@
   const closeButton = overlay.querySelector('.focus-close');
   let lastTrigger = null;
 
-  const stopSpeech = () => {
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-  };
-
   const closeFocus = () => {
     if (overlay.hidden) return;
-    stopSpeech();
     overlay.hidden = true;
     inner.replaceChildren();
     document.body.classList.remove('focus-open');
@@ -152,23 +147,6 @@
 
     const tools = document.createElement('div');
     tools.className = 'focus-tools';
-    if ('speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined') {
-      const play = document.createElement('button');
-      play.type = 'button';
-      play.textContent = '▶ Play';
-      const stop = document.createElement('button');
-      stop.type = 'button';
-      stop.textContent = '■ Stop';
-      play.addEventListener('click', () => {
-        stopSpeech();
-        const utterance = new SpeechSynthesisUtterance(`${title.textContent}. ${source.innerText}`);
-        utterance.lang = 'en-IE';
-        utterance.rate = 0.92;
-        window.speechSynthesis.speak(utterance);
-      });
-      stop.addEventListener('click', stopSpeech);
-      tools.append(play, stop);
-    }
 
     const cms = document.createElement('a');
     cms.href = 'https://app.pagescms.org/ronandownes/rtb/main';
@@ -205,7 +183,6 @@
   closeButton.addEventListener('click', closeFocus);
   overlay.addEventListener('click', event => { if (event.target === overlay) closeFocus(); });
   document.addEventListener('keydown', event => { if (event.key === 'Escape') closeFocus(); });
-  window.addEventListener('pagehide', stopSpeech);
 
   renderWall();
   if (sections.length) markCurrent(sections[0].id);
