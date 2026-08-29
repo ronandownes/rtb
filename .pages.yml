@@ -2,25 +2,24 @@ media:
   input: assets/uploads
   output: /assets/uploads
 
+components:
+  page_fields:
+    type: object
+    label: Page fields
+    fields: &pagefields
+      - { name: layout, type: string, hidden: true }
+      - { name: title, type: string, label: Title }
+      - { name: section, type: string, hidden: true }
+      - { name: eyebrow, type: string, label: Eyebrow }
+      - { name: intro, type: text, label: Introduction }
+      - { name: cms_path, type: string, hidden: true }
+      - { name: body, type: rich-text, label: Page content }
+
 content:
-  - name: guide
-    label: "RTB Guide"
-    type: file
-    path: _data/guide.yml
-    format: yaml
-    fields:
-      - name: sections
-        label: "Sections"
-        type: object
-        list: true
-        fields:
-          - { name: id, type: string, label: "Section ID" }
-          - { name: title, type: string, label: "Heading" }
-          - { name: body, type: rich-text, label: "Explanation" }
-          - name: terms
-            label: "Word Wall terms"
-            type: object
-            list: true
-            fields:
-              - { name: term, type: string, label: "Term" }
-              - { name: definition, type: text, label: "Definition" }
+  - { name: registration, label: "Registration", type: file, path: registration.md, format: yaml-frontmatter, fields: *pagefields }
+  - { name: renting, label: "Renting", type: file, path: renting.md, format: yaml-frontmatter, fields: *pagefields }
+  - { name: disputes, label: "Disputes", type: file, path: disputes.md, format: yaml-frontmatter, fields: *pagefields }
+  - { name: compliance, label: "Compliance", type: file, path: compliance.md, format: yaml-frontmatter, fields: *pagefields }
+  - { name: resources, label: "Resources", type: file, path: resources.md, format: yaml-frontmatter, fields: *pagefields }
+  - { name: data, label: "Data & Insights", type: file, path: data-insights.md, format: yaml-frontmatter, fields: *pagefields }
+  - { name: about, label: "About", type: file, path: about.md, format: yaml-frontmatter, fields: *pagefields }
