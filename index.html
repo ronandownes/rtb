@@ -1,3 +1,5 @@
+---
+---
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Plain-English RTB information, tools and data for quicker rental decisions.">
   <title>RTB Guide | Ronan Downes</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
 </head>
 <body>
   <header class="topbar">
@@ -35,146 +37,62 @@
       <h1>RTB Guide</h1>
       <p class="doc-intro">A fast, plain-English working guide to registration, rent, termination, disputes, compliance and RTB data. Current and historical rules are kept distinct where dates matter.</p>
 
+      <div class="doc-toolbar">
+        <a class="edit-link" href="https://app.pagescms.org/ronandownes/rtb/main" target="_blank" rel="noopener">Open Pages CMS</a>
+        <span class="toolbar-note">Double-click any topic heading for focus view.</span>
+      </div>
+
       <div class="workspace">
         <aside class="topic-rail" aria-label="Topics on this page">
-          <a href="#registration">Registration</a>
-          <a href="#renting">Renting</a>
-          <a href="#disputes">Disputes</a>
-          <a href="#termination-notices">Termination Notices</a>
-          <a href="#compliance">Compliance</a>
-          <a href="#services">RTB Services</a>
-          <a href="#data">Data &amp; Insights</a>
-          <a href="#glossary">Glossary</a>
+          {% for section in site.data.guide.sections %}
+            <a href="#{{ section.id }}">{{ section.title }}</a>
+          {% endfor %}
+          <a href="#word-wall">Word Wall</a>
         </aside>
 
-        <div class="doc-body">
-          <section class="topic-section" id="registration" data-title="Registration">
-            <button class="topic-heading" type="button" aria-expanded="true">
-              <span>Registration</span><span class="topic-caret">−</span>
+        <div class="doc-body" id="docBody">
+          {% for section in site.data.guide.sections %}
+          <section class="topic-section" id="{{ section.id }}" data-title="{{ section.title | escape }}">
+            <button class="topic-heading" type="button" aria-expanded="true" aria-haspopup="dialog" title="Double-click for focus view">
+              <span>{{ section.title }}</span><span class="topic-caret">−</span>
             </button>
             <div class="topic-content">
-              <p>Registration material will be kept concise: who must register, when registration and annual registration are required, what records matter, and what evidence can establish registration status.</p>
-              <button class="glossary-toggle" data-term="Tenancy registration" data-definition="The process by which a tenancy is recorded with the Residential Tenancies Board, subject to the rules applying at the relevant time.">Add “Tenancy registration” to glossary</button>
-            </div>
-          </section>
+              {{ section.body | markdownify }}
 
-          <section class="topic-section" id="renting" data-title="Renting">
-            <button class="topic-heading" type="button" aria-expanded="true">
-              <span>Renting</span><span class="topic-caret">−</span>
-            </button>
-            <div class="topic-content">
-              <p>This section will contain rent-setting rules, rent reviews, notices, RPZ rules, market-rent evidence and rent records. Historical rules will be dated rather than silently applying today’s rules to older events.</p>
-              <button class="glossary-toggle" data-term="Rent review" data-definition="A formal change or proposed change to rent that must satisfy the legal requirements applying at the date of the review.">Add “Rent review” to glossary</button>
-              <button class="glossary-toggle" data-term="Rent Pressure Zone (RPZ)" data-definition="An area in which rent-setting rules are subject to statutory restrictions that depend on the period in question.">Add “Rent Pressure Zone (RPZ)” to glossary</button>
-            </div>
-          </section>
-
-          <section class="topic-section" id="disputes" data-title="Disputes">
-            <button class="topic-heading" type="button" aria-expanded="true">
-              <span>Disputes</span><span class="topic-caret">−</span>
-            </button>
-            <div class="topic-content">
-              <p>Dispute material will focus on the routes a user actually needs: submitting a dispute, adjudication, mediation, tribunal, evidence, remedies, determination orders and urgent or interim issues where applicable.</p>
-              <button class="glossary-toggle" data-term="Adjudication" data-definition="An RTB dispute-resolution process in which an adjudicator considers the parties’ evidence and makes findings and an award or direction subject to the statutory process.">Add “Adjudication” to glossary</button>
-            </div>
-          </section>
-
-          <section class="topic-section" id="termination-notices" data-title="Termination Notices">
-            <button class="topic-heading" type="button" aria-expanded="true">
-              <span>Termination Notices</span><span class="topic-caret">−</span>
-            </button>
-            <div class="topic-content">
-              <p>This will hold the official RTB termination-notice form/template, a requirement-by-requirement checklist and a comparison tool for examining a notice against the applicable statutory requirements.</p>
+              {% if section.id == 'termination-notices' %}
               <div class="notice-checker">
-                <div class="notice-card">
-                  <h3>Official requirements</h3>
-                  <p class="muted">To be populated from the current RTB source and, where required, historical versions.</p>
-                </div>
-                <div class="notice-card">
-                  <h3>Notice being checked</h3>
-                  <p class="muted">A case notice can be compared here without turning the public guide into a case file.</p>
-                </div>
+                <div class="notice-card"><h3>Official requirements</h3><p class="muted">Current and historical RTB requirements will be kept separately where the applicable date matters.</p></div>
+                <div class="notice-card"><h3>Notice being checked</h3><p class="muted">A notice can be checked requirement by requirement without turning the public guide into a case file.</p></div>
               </div>
-              <button class="glossary-toggle" data-term="Notice of Termination" data-definition="A formal notice ending a tenancy. Its validity depends on compliance with the statutory requirements applying to that notice and its ground for termination.">Add “Notice of Termination” to glossary</button>
-            </div>
-          </section>
+              {% endif %}
 
-          <section class="topic-section" id="compliance" data-title="Compliance">
-            <button class="topic-heading" type="button" aria-expanded="true">
-              <span>Compliance</span><span class="topic-caret">−</span>
-            </button>
-            <div class="topic-content">
-              <p>Compliance will separate tenant dispute remedies from RTB investigation and sanctions functions, with short explanations of registration, rent, standards, termination and other regulated obligations.</p>
-            </div>
-          </section>
-
-          <section class="topic-section" id="services" data-title="RTB Services">
-            <button class="topic-heading" type="button" aria-expanded="true">
-              <span>RTB Services</span><span class="topic-caret">−</span>
-            </button>
-            <div class="topic-content">
-              <p class="section-intro">Initial service map from the RTB Services → All Categories screen. Labels will be verified against the live RTB service before publication.</p>
+              {% if section.id == 'services' %}
               <div class="service-grid">
-                <div>Dispute Services</div>
-                <div>Submit a Dispute Case</div>
-                <div>SSA Services <span class="verify">verify label</span></div>
-                <div>Submit a Tenancy Data Sheet</div>
-                <div>Submit a Rent Setting Notice</div>
-                <div>Submit a Rent Review Notice</div>
-                <div>Termination Notices</div>
+                <div>Dispute Services</div><div>Submit a Dispute Case</div><div>SSA Services <span class="verify">verify label</span></div><div>Submit a Tenancy Data Sheet</div><div>Submit a Rent Setting Notice</div><div>Submit a Rent Review Notice</div><div>Termination Notices</div>
               </div>
-            </div>
-          </section>
+              {% endif %}
 
-          <section class="topic-section" id="resources" data-title="Resources">
-            <button class="topic-heading" type="button" aria-expanded="true">
-              <span>Resources</span><span class="topic-caret">−</span>
-            </button>
-            <div class="topic-content">
-              <p>Forms, checklists, source links and printable material will live here. The guide will link back to authoritative RTB material instead of copying unnecessary pages.</p>
-            </div>
-          </section>
-
-          <section class="topic-section" id="data" data-title="Data & Insights">
-            <button class="topic-heading" type="button" aria-expanded="true">
-              <span>Data &amp; Insights</span><span class="topic-caret">−</span>
-            </button>
-            <div class="topic-content">
-              <p>The website will carry the decision-useful RTB tables directly—no Excel or Google Sheets required for ordinary viewing.</p>
-
+              {% if section.id == 'data' %}
               <h3>New tenancies</h3>
-              <div class="table-wrap">
-                <table>
-                  <thead><tr><th>Area / period</th><th>Typical rent measure</th><th>Change</th><th>Source period</th></tr></thead>
-                  <tbody><tr><td colspan="4" class="muted">RTB tenancy-index data to be loaded from the authoritative RTB dataset.</td></tr></tbody>
-                </table>
-              </div>
-
+              <div class="table-wrap"><table><thead><tr><th>Area / period</th><th>Typical rent measure</th><th>Change</th><th>Source period</th></tr></thead><tbody><tr><td colspan="4" class="muted">Authoritative RTB tenancy-index data will be loaded here.</td></tr></tbody></table></div>
               <h3>Existing / older tenancies</h3>
-              <div class="table-wrap">
-                <table>
-                  <thead><tr><th>Area / period</th><th>Typical rent measure</th><th>Change</th><th>Source period</th></tr></thead>
-                  <tbody><tr><td colspan="4" class="muted">Historical RTB tenancy-index data to be loaded separately so new and existing tenancies are not conflated.</td></tr></tbody>
-                </table>
-              </div>
+              <div class="table-wrap"><table><thead><tr><th>Area / period</th><th>Typical rent measure</th><th>Change</th><th>Source period</th></tr></thead><tbody><tr><td colspan="4" class="muted">Historical RTB tenancy-index data will remain separate from new-tenancy data.</td></tr></tbody></table></div>
+              {% endif %}
+
+              {% for item in section.terms %}
+              <button class="glossary-toggle" data-term="{{ item.term | escape }}" data-definition="{{ item.definition | escape }}">Add “{{ item.term }}” to Word Wall</button>
+              {% endfor %}
             </div>
           </section>
+          {% endfor %}
 
-          <section class="topic-section" id="about" data-title="About">
-            <button class="topic-heading" type="button" aria-expanded="true">
-              <span>About</span><span class="topic-caret">−</span>
-            </button>
-            <div class="topic-content">
-              <p>This site provides information, case preparation and representation support. It is not a law firm and does not provide legal advice.</p>
-            </div>
-          </section>
-
-          <section class="glossary-section" id="glossary">
+          <section class="glossary-section" id="word-wall">
             <div class="glossary-heading-row">
-              <h2>Glossary</h2>
-              <button id="clearGlossary" class="secondary-button" type="button">Clear glossary</button>
+              <h2>Word Wall / Language Bank</h2>
+              <button id="clearGlossary" class="secondary-button" type="button">Clear Word Wall</button>
             </div>
-            <p class="muted glossary-empty" id="glossaryEmpty">Nothing saved yet. Add only the terms you want to keep.</p>
+            <p class="muted">Keep only the RTB language you want to retrieve, practise and articulate.</p>
+            <p class="muted glossary-empty" id="glossaryEmpty">Nothing saved yet. Add terms from any topic.</p>
             <div id="glossaryList" class="glossary-list"></div>
           </section>
         </div>
@@ -182,6 +100,6 @@
     </article>
   </main>
 
-  <script src="assets/app.js"></script>
+  <script src="{{ '/assets/app.js' | relative_url }}"></script>
 </body>
 </html>
