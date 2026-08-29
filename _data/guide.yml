@@ -1,0 +1,64 @@
+sections:
+  - id: registration
+    title: Registration
+    body: |
+      Registration material will be kept concise: who must register, when registration and annual registration are required, what records matter, and what evidence can establish registration status.
+    terms:
+      - term: Tenancy registration
+        definition: The process by which a tenancy is recorded with the Residential Tenancies Board, subject to the rules applying at the relevant time.
+
+  - id: renting
+    title: Renting
+    body: |
+      This section will contain rent-setting rules, rent reviews, notices, RPZ rules, market-rent evidence and rent records. Historical rules will be dated rather than silently applying today's rules to older events.
+    terms:
+      - term: Rent review
+        definition: A formal change or proposed change to rent that must satisfy the legal requirements applying at the date of the review.
+      - term: Rent Pressure Zone (RPZ)
+        definition: An area in which rent-setting rules are subject to statutory restrictions that depend on the period in question.
+
+  - id: disputes
+    title: Disputes
+    body: |
+      Dispute material will focus on the routes a user actually needs: submitting a dispute, adjudication, mediation, tribunal, evidence, remedies, determination orders and urgent or interim issues where applicable.
+    terms:
+      - term: Adjudication
+        definition: An RTB dispute-resolution process in which an adjudicator considers the parties' evidence and makes findings and an award or direction subject to the statutory process.
+
+  - id: termination-notices
+    title: Termination Notices
+    body: |
+      This will hold the official RTB termination-notice form or template, a requirement-by-requirement checklist and a comparison tool for examining a notice against the applicable statutory requirements.
+    terms:
+      - term: Notice of Termination
+        definition: A formal notice ending a tenancy. Its validity depends on compliance with the statutory requirements applying to that notice and its ground for termination.
+
+  - id: compliance
+    title: Compliance
+    body: |
+      Compliance will separate tenant dispute remedies from RTB investigation and sanctions functions, with short explanations of registration, rent, standards, termination and other regulated obligations.
+    terms: []
+
+  - id: services
+    title: RTB Services
+    body: |
+      Initial service map from the RTB Services → All Categories screen. Labels will be verified against the live RTB service before publication.
+    terms: []
+
+  - id: resources
+    title: Resources
+    body: |
+      Forms, checklists, source links and printable material will live here. The guide will link back to authoritative RTB material instead of copying unnecessary pages.
+    terms: []
+
+  - id: data
+    title: Data & Insights
+    body: |
+      The website will carry the decision-useful RTB tables directly — no Excel or Google Sheets required for ordinary viewing.
+    terms: []
+
+  - id: about
+    title: About
+    body: |
+      This site provides information, case preparation and representation support. It is not a law firm and does not provide legal advice.
+    terms: []
