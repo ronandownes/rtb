@@ -1,0 +1,26 @@
+media:
+  input: assets/uploads
+  output: /assets/uploads
+
+content:
+  - name: guide
+    label: "RTB Guide"
+    type: file
+    path: _data/guide.yml
+    format: yaml
+    fields:
+      - name: sections
+        label: "Sections"
+        type: object
+        list: true
+        fields:
+          - { name: id, type: string, label: "Section ID" }
+          - { name: title, type: string, label: "Heading" }
+          - { name: body, type: rich-text, label: "Explanation" }
+          - name: terms
+            label: "Word Wall terms"
+            type: object
+            list: true
+            fields:
+              - { name: term, type: string, label: "Term" }
+              - { name: definition, type: text, label: "Definition" }
