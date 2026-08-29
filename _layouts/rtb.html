@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.intro | default: page.title | escape }}">
+  <title>{{ page.title }} | Ronan Downes RTB Guide</title>
+  <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/focus.css' | relative_url }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Ronan Downes RTB Guide — Home">
+      <img src="{{ '/assets/rtb-logo.svg' | relative_url }}" alt="Ronan Downes RTB Guide" style="display:block;width:148px;height:auto">
+    </a>
+    <button class="mobile-nav-toggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open main navigation"><span class="mobile-nav-icon" aria-hidden="true"></span></button>
+    <nav class="topnav" id="mainNav" aria-label="Main navigation">
+      <a class="navlabel{% if page.section == 'registration' %} is-current{% endif %}" href="{{ '/registration.html' | relative_url }}">Registration</a>
+      <a class="navlabel{% if page.section == 'renting' %} is-current{% endif %}" href="{{ '/renting.html' | relative_url }}">Renting</a>
+      <a class="navlabel{% if page.section == 'disputes' %} is-current{% endif %}" href="{{ '/disputes.html' | relative_url }}">Disputes</a>
+      <a class="navlabel{% if page.section == 'compliance' %} is-current{% endif %}" href="{{ '/compliance.html' | relative_url }}">Compliance</a>
+      <a class="navlabel{% if page.section == 'resources' %} is-current{% endif %}" href="{{ '/resources.html' | relative_url }}">Resources</a>
+      <a class="navlabel{% if page.section == 'data' %} is-current{% endif %}" href="{{ '/data-insights.html' | relative_url }}">Data &amp; Insights</a>
+      <a class="navlabel{% if page.section == 'about' %} is-current{% endif %}" href="{{ '/about.html' | relative_url }}">About</a>
+    </nav>
+  </header>
+
+  <main class="page-stage">
+    <article class="doc-paper">
+      {% if page.eyebrow %}<p class="doc-kicker">{{ page.eyebrow }}</p>{% endif %}
+      <h1 class="cms-edit-title"{% if page.cms_path %} data-cms-url="https://app.pagescms.org/ronandownes/rtb/main/{{ page.cms_path }}" title="Double-click to edit this page in Pages CMS"{% endif %}>{{ page.title }}</h1>
+      {% if page.intro %}<p class="doc-intro">{{ page.intro }}</p>{% endif %}
+      <div class="doc-body" id="docBody">{{ content }}</div>
+    </article>
+  </main>
+
+  <script src="{{ '/assets/app.js' | relative_url }}"></script>
+  <script>
+    (() => {
+      const title = document.querySelector('.cms-edit-title[data-cms-url]');
+      if (!title) return;
+      title.style.cursor = 'default';
+      title.addEventListener('dblclick', () => window.open(title.dataset.cmsUrl, '_blank', 'noopener'));
+    })();
+  </script>
+</body>
+</html>
