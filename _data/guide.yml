@@ -2,10 +2,26 @@ sections:
   - id: registration
     title: Registration
     body: |
-      Registration material will be kept concise: who must register, when registration and annual registration are required, what records matter, and what evidence can establish registration status.
+      ## Who, how and when to register a tenancy
+
+      Private landlords must register each tenancy with the RTB. By law, tenancies must also be registered annually.
+
+      Not registering can have serious consequences. The RTB can pursue criminal prosecution or impose a civil sanction.
+
+      **Criminal prosecution:** fines of up to €4,000, up to 6 months' imprisonment, €250 for each day the tenancy remains unregistered, and RTB legal costs.
+
+      **Civil sanction:** up to €15,000 plus up to €15,000 in costs for each unregistered tenancy.
+
+      If a landlord receives a Registration Enforcement Notice, the practical response is to register the tenancy, pay any late fees, and confirm the registration with the RTB.
+
+      An unregistered tenancy can also be reported to the RTB.
     terms:
       - term: Tenancy registration
-        definition: The process by which a tenancy is recorded with the Residential Tenancies Board, subject to the rules applying at the relevant time.
+        definition: The legal requirement to register a tenancy with the RTB and renew that registration annually.
+      - term: Registration Enforcement Notice
+        definition: A formal RTB notice requiring action where a tenancy appears not to have been properly registered.
+      - term: Civil sanction
+        definition: A financial penalty that may be imposed through the RTB investigation and sanctions process instead of criminal prosecution.
 
   - id: renting
     title: Renting
