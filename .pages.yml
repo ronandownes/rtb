@@ -18,8 +18,21 @@ components:
 content:
   - { name: registration, label: "Registration", type: file, path: registration.md, format: yaml-frontmatter, fields: *pagefields }
   - { name: renting, label: "Renting", type: file, path: renting.md, format: yaml-frontmatter, fields: *pagefields }
-  - { name: disputes, label: "Disputes", type: file, path: disputes.md, format: yaml-frontmatter, fields: *pagefields }
-  - { name: compliance, label: "Compliance", type: file, path: compliance.md, format: yaml-frontmatter, fields: *pagefields }
+
+  - name: termination_possession
+    label: "Termination & Possession"
+    type: group
+    items:
+      - { name: repossession, label: "Repossession & Recovery of Possession", type: file, path: repossession.md, format: yaml-frontmatter, fields: *pagefields }
+      - { name: disputes, label: "Disputes", type: file, path: disputes.md, format: yaml-frontmatter, fields: *pagefields }
+
+  - name: property_use
+    label: "Property Use & Configuration"
+    type: group
+    items:
+      - { name: subdivision, label: "Subdivision, Room-by-Room Letting & Change of Use", type: file, path: subdivision-change-of-use.md, format: yaml-frontmatter, fields: *pagefields }
+      - { name: compliance, label: "Compliance", type: file, path: compliance.md, format: yaml-frontmatter, fields: *pagefields }
+
   - { name: resources, label: "Resources", type: file, path: resources.md, format: yaml-frontmatter, fields: *pagefields }
   - { name: data, label: "Data & Insights", type: file, path: data-insights.md, format: yaml-frontmatter, fields: *pagefields }
   - { name: about, label: "About", type: file, path: about.md, format: yaml-frontmatter, fields: *pagefields }
